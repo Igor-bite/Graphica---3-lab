@@ -1,0 +1,68 @@
+//
+//  header.hpp
+//  2 lab comp graphica
+//
+//  Created by Игорь Клюжев on 14.03.2020.
+//  Copyright © 2020 Игорь Клюжев. All rights reserved.
+//
+
+#pragma once
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+typedef unsigned char uchar;
+
+class FileIOException : public exception {
+public:
+    const char* what() const _NOEXCEPT override {
+        return "Error while trying to read file or write to file";
+    }
+};
+
+class UnsupportedFormatException : public exception {
+public:
+    const char* what() const _NOEXCEPT override {
+        return "Unsupported format of PNM file";
+    }
+};
+
+class ExecutionException : public exception {
+public:
+    const char* what() const _NOEXCEPT override {
+        return "Failed to execute the command";
+    }
+};
+
+struct Point {
+    float x;
+    float y;
+};
+
+class PNMPicture {
+public:
+    PNMPicture();
+    explicit PNMPicture(string fileName);
+
+    void read(string fileName);
+    void read(ifstream& inputFile);
+
+    void write(const string& fileName);
+    void write(ofstream& outputFile);
+
+    void drawLine(Point start, Point end, uchar color, float thickness = 1.0, float gamma = 0);
+    void drawLine(float x0, float y0, float x1, float y1, uchar color, float thickness, float gamma = 0);
+
+private:
+    short format;
+    int width, height;
+    int colors;
+    vector<uchar> data;
+
+    void drawPoint(int x, int y, double transparency, uchar color);
+    void drawPoint(int x, int y, double transparency, uchar color, float gamma);
+};
