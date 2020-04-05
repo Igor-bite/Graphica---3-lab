@@ -12,5 +12,8 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     cout << "Hello, World!\n";
     cout << "1 dithering method\n";
+    
+    
+    cout << "image detection" << endl;
     return 0;
 }
