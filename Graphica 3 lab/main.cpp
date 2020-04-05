@@ -30,10 +30,5 @@ int main(int argc, const char * argv[]) {
     float y1 = stof(argv[8]);
     
     float gamma = 2.2;
-    bool gammaDefined = false;
-    if (argc == 10) {
-        gamma = stof(argv[9]);
-        gammaDefined = true;
-    }
     return 0;
 }
