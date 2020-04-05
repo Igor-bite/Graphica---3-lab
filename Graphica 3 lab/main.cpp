@@ -24,10 +24,6 @@ int main(int argc, const char * argv[]) {
     string outputFileName = argv[2];
     uchar color = stoi(argv[3]);
     float thickness = stof(argv[4]);
-    float x0 = stof(argv[5]);
-    float y0 = stof(argv[6]);
-    float x1 = stof(argv[7]);
-    float y1 = stof(argv[8]);
     
     float gamma = 2.2;
     return 0;
